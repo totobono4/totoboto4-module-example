@@ -1,7 +1,7 @@
 /**
  * These exports are the information of your module, the bot gonna use them for logs.
  */
-exports.name = 'SDK-module';
+exports.name = 'totoboto4-module-example';
 exports.version = '1.0.0';
 
 /**
