@@ -59,7 +59,8 @@ class Module {
         await interaction.editReply({
           embeds: [
             this.MessageEmbedBuilder(user, gif0, 'pong', url, 'got panged ! !', gif0, `${user.username} pang services !!`)
-          ]
+          ],
+          components: []
         });
       }
     } catch (e) {
