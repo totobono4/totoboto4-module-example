@@ -35,6 +35,7 @@ class Module {
     const url = 'https://tenor.com/view/pong-video-game-atari-tennis-70s-gif-16894549'
     const gif = 'https://c.tenor.com/2gyJVMt_L6wAAAAC/pong-video-game.gif'
     const gif0 = 'https://media.tenor.com/ZBVQpHH9YfkAAAAC/oh-no-joseph-joestar.gif'
+    const gif1 = 'https://media.tenor.com/p45pEdZ3j8MAAAAC/skeleton-waiting-for-you.gif'
     
     const pang = new ButtonBuilder()
 			.setCustomId('pang')
@@ -46,7 +47,7 @@ class Module {
     
     const response = await interaction.reply({
       embeds: [
-        this.MessageEmbedBuilder(user, gif, 'ping', url, 'pong !', gif, 'totoboto4 ping services')
+        this.MessageEmbedBuilder(user, user.avatarURL(), 'ping', url, 'pong !', gif, 'totoboto4 ping services')
       ],
       components: [row]
     })
@@ -58,13 +59,18 @@ class Module {
       if (panged.customId === 'pang') {
         await interaction.editReply({
           embeds: [
-            this.MessageEmbedBuilder(user, gif0, 'pong', url, 'got panged ! !', gif0, `${user.username} pang services !!`)
+            this.MessageEmbedBuilder(user, user.avatarURL(), 'pong', url, 'got panged ! !', gif0, `${user.username} pang services !!`)
           ],
           components: []
         });
       }
     } catch (e) {
-      await interaction.editReply({ content: 'Confirmation not received within 1 minute, cancelling', components: [] });
+      await interaction.editReply({
+        embeds: [
+          this.MessageEmbedBuilder(user, user.avatarURL(), 'Dead Bored', url, 'You so boring, I\'m dead of waiting.', gif1, `${user.username} boring services...`)
+        ],
+        components: []
+      });
     }
   }
 
