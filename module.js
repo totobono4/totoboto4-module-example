@@ -2,8 +2,8 @@ const { Client, EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuild
 const { Module } = require('totoboto4-core')
 
 class ExampleModule extends Module {
-  constructor() {
-     super()
+  constructor(modulator) {
+     super(modulator)
 
     this.name = 'Example-module';
     this.version = '1.0.0';
@@ -96,4 +96,4 @@ class ExampleModule extends Module {
   }
 }
 
-module.exports = new ExampleModule()
+module.exports = ExampleModule
