@@ -16,8 +16,7 @@ class ExampleModule extends Module {
   }
 
   /**
-   * 
-   * @param {Client} client 
+   * @param {} data 
    */
   launch(data) {
     const client = data.client
