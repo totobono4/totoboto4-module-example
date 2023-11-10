@@ -1,7 +1,10 @@
 const { Client, EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { Module } = require('totoboto4-core')
 
-class Module {
+class ExampleModule extends Module {
   constructor() {
+     super()
+
     this.name = 'Example-module';
     this.version = '1.0.0';
 
@@ -16,7 +19,9 @@ class Module {
    * 
    * @param {Client} client 
    */
-  launch(client) {
+  launch(data) {
+    const client = data.client
+
     client.on("interactionCreate", (interaction) => {
       if (!interaction.isChatInputCommand()) return
 
@@ -92,4 +97,4 @@ class Module {
   }
 }
 
-module.exports = new Module()
+module.exports = new ExampleModule()
