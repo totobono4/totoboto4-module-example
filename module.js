@@ -1,5 +1,6 @@
-const { Client, EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { Module } = require('totoboto4-core')
+const { EmbedBuilder, SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { Module, Debugger } = require('totoboto4-core')
+const debug = new Debugger()
 
 class ExampleModule extends Module {
   constructor(modulator) {
@@ -19,6 +20,8 @@ class ExampleModule extends Module {
    * @param {} data 
    */
   launch(data) {
+    debug.addLayer("EXAMPLE", "example")
+
     const client = data.client
 
     client.on("interactionCreate", (interaction) => {
@@ -55,6 +58,7 @@ class ExampleModule extends Module {
       ],
       components: [row]
     })
+    debug.debug(debug.layers.EXAMPLE, debug.types.Debug, "Pinged")
 
     const filter = i => i.user.id === interaction.user.id;
     try {
@@ -67,6 +71,7 @@ class ExampleModule extends Module {
           ],
           components: []
         });
+        debug.debug(debug.layers.EXAMPLE, debug.types.Debug, "Panged")
       }
     } catch (e) {
       await interaction.editReply({
@@ -75,6 +80,7 @@ class ExampleModule extends Module {
         ],
         components: []
       });
+      debug.debug(debug.layers.EXAMPLE, debug.types.Debug, "Bored")
     }
   }
 
